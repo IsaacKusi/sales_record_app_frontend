@@ -1,0 +1,56 @@
+
+#record-nav-main{
+ display: flex;
+ justify-content: space-between;
+ background:linear-gradient(107.85deg, blue -144.58%, blue -144.58%, rgba(217, 217, 217, 0) 104.83%);
+ padding:0 1rem 0 1rem;   
+}
+
+#record-nav-main h1 {
+    color:rgb(61, 60, 60);
+    text-align: center;
+}
+
+.record-child-p, .record-child-h1{
+    display: flex;
+    place-content: center;
+    align-items: center;
+}
+
+#table-items{
+  display: flex;
+  place-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.container-items{
+    border: 1px solid rgb(236, 232, 232);
+    border-radius: 10px;
+    box-shadow: 17px 28px 53px -17px rgba(70, 68, 68, 0.7); 
+    width: 80%;
+    height: 80vh;
+}
+
+table{
+  
+    width: 100%;
+}
+
+.table-head th{
+    border-bottom-style: groove;
+    padding: 1rem 0 1rem 0;
+
+}
+
+
+.table-amount{
+    width: 35rem;
+    text-align: center;
+    
+}
+
+.table-date{
+    width: 20rem;
+}
+
