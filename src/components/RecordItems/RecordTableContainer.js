@@ -8,9 +8,11 @@ const RecordTableContainer = () => {
             <div className="container-items">
                 <table>
                     <thead className="table-head">
+                        <tr>
                         <th className="table-date">Date</th>
                         <th className="table-amount">Amount </th>
                         <th>Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
 

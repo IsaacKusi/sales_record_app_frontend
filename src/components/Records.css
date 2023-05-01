@@ -11,10 +11,19 @@
     text-align: center;
 }
 
-.record-child-p, .record-child-h1{
+.record-child, .record-child-h1{
     display: flex;
     place-content: center;
     align-items: center;
+}
+
+.record-child button {
+    cursor: pointer;
+    background-color:blue;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    font-weight: bolder;
 }
 
 #table-items{
