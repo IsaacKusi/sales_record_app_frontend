@@ -5,8 +5,7 @@ import DataContext from '../context/DataContext'
 import './Login.css'
 
 const Login = () => {
-    const { setUsername, setPassword, setPosting } = useContext(DataContext)
-
+    const { setUsername, setPassword, setPosting} = useContext(DataContext)
 
     const loginHandler = (e) => {
         e.preventDefault()
@@ -22,9 +21,9 @@ const Login = () => {
                 <p>Please login with your username and password</p>
                 <div className='login-form-item'>
                     <form className='login-form' onSubmit={loginHandler} >
-                        <input type="text" placeholder='Username' name='username' autoComplete='off' />
+                        <input type="text" placeholder='Username' name='username' autoComplete='off' required />
                         <FaUser className='form-user' />
-                        <input type="password" placeholder='Password' name='password' />
+                        <input type="password" placeholder='Password' name='password' required/>
                         <FaLock className='form-user' />
                         <div className='submit-contain'>
                             <input type="submit" value='Login' className='submit-button' />
