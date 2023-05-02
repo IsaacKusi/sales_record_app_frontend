@@ -17,7 +17,7 @@ const RecordTableContainer = () => {
                         </tr>
                     </thead>
                     <tbody>
-                       {sales.map((items)=><RecordTableBody items={items} key={items.item_id}/>)}
+                       {sales?.map((items)=><RecordTableBody items={items} key={items.item_id}/>)}
                     </tbody>
                 </table>
             </div>

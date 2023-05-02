@@ -13,7 +13,34 @@ export const DataProvider = ({ children }) => {
     const [password, setPassword] = useState()
     const [authToken, setAuthToken] = useState()
     const [userAccess, setUserAccess] = useState()
-    const [sales, setSales]= useState([])
+    const [sales, setSales] = useState([])
+
+
+    useEffect(() => {
+
+        const getSaleItems = async () => {
+            try {
+                const response = await api.get(`api/sale/${userAccess?.user_id}`, {headers:{
+                    'Content-Type':'application/json'
+                }})
+                setSales(response.data)
+            } catch (err) {
+                if (err) {
+                    console.log(err.response.data)
+                    console.log(err.response.status)
+                    console.log(err.response.headers)
+                } else {
+                    console.log(err)
+                }
+            }
+        }
+
+        getSaleItems()
+
+    }, [userAccess?.user_id])
+
+
+
 
     useEffect(() => {
         if (posting) {
@@ -72,7 +99,6 @@ export const DataProvider = ({ children }) => {
 
 
     const updateToken = useCallback(async () => {
-        console.log('function called')
         try {
             const response = await api.post('/api/token/refresh/',
                 { 'refresh': authToken?.refresh },
