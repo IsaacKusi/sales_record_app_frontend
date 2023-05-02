@@ -4,7 +4,7 @@ import DataContext from "../../context/DataContext"
 
 
 const RecordNav = () => {
-    const {logoutHandler} = useContext(DataContext)
+    const {logoutHandler, userAccess} = useContext(DataContext)
 
     return <>
         <main id="record-nav-main">
@@ -12,7 +12,7 @@ const RecordNav = () => {
                 <h1>Sales</h1>
             </div>
             <div className="record-child">
-                <p>Welcome Isaac</p>
+               {userAccess? <p>Welcome {userAccess.username}</p> : null }
             </div>
             <div className="record-child">
                 <button onClick={logoutHandler}>Logout</button>
