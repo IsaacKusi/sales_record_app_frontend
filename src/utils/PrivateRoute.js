@@ -7,7 +7,7 @@ const PrivateRoute = ({children, ...rest})=>{
     const{userAccess} = useContext(DataContext)
     return <>
      <Route {...rest}>
-        {!userAccess ? <Redirect to='/login'/> : children}
+        {!userAccess ? <Redirect to='/'/> : children}
         </Route>
     </>
 }
