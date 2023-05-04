@@ -11,7 +11,7 @@ const NewRecord = () => {
 
     const addRecordHandler = async (e) => {
         e.preventDefault()
-        if (amountItem == '') {
+        if (amountItem === '') {
             setInvalid(true)
             setTimeout(()=>setInvalid(false), 1500)
         } else {

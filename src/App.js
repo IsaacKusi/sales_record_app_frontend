@@ -14,7 +14,7 @@ const App = () => {
     <>
       <DataProvider>
         <Switch>
-          <Route path='/login' component={Login} />
+          <Route exact path='/' component={Login} />
           <PrivateRoute path='/records' component={Records} />
         </Switch>
       </DataProvider>

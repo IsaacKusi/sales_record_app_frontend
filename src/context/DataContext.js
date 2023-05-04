@@ -94,7 +94,7 @@ export const DataProvider = ({ children }) => {
         setUserAccess(null)
         setAuthToken(null)
         setPosting(false)
-        history.push('/login')
+        history.push('/')
     }, [history])
 
 
