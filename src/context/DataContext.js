@@ -17,8 +17,8 @@ export const DataProvider = ({ children }) => {
 
 
     useEffect(() => {
-
         const getSaleItems = async () => {
+            
             try {
                 const response = await api.get(`api/sale/${userAccess?.user_id}`, {headers:{
                     'Content-Type':'application/json'
@@ -35,15 +35,14 @@ export const DataProvider = ({ children }) => {
             }
         }
 
-        getSaleItems()
+        getSaleItems() 
 
     }, [userAccess?.user_id])
 
-
-
-
+    
     useEffect(() => {
         if (posting) {
+            console.log('there is a place')
             const login = async () => {
                 try {
                     const response = await api.post('/api/token/',
