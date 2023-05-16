@@ -29,9 +29,7 @@ export const DataProvider = ({ children }) => {
                     console.log(err.response.data)
                     console.log(err.response.status)
                     console.log(err.response.headers)
-                } else {
-                    console.log(err)
-                }
+                } 
             }
         }
 
@@ -42,7 +40,6 @@ export const DataProvider = ({ children }) => {
     
     useEffect(() => {
         if (posting) {
-            console.log('there is a place')
             const login = async () => {
                 try {
                     const response = await api.post('/api/token/',
@@ -53,22 +50,16 @@ export const DataProvider = ({ children }) => {
                             }
                         }
                     )
-
-                    if (response.status === 200) {
                         setAuthToken(response.data)
                         setUserAccess(jwt_decode(response.data.access))
                         localStorage.setItem('authtoken', JSON.stringify(response.data))
                         history.push('/records')
-                    }
-
                 }
                 catch (err) {
                     if (err.response) {
                         console.log(err.response.data)
                         console.log(err.response.status)
                         console.log(err.response.headers)
-                    } else {
-                        console.log(err)
                     }
                 }
             }
@@ -107,25 +98,18 @@ export const DataProvider = ({ children }) => {
                     }
                 }
             )
-
-            if (response.status === 200) {
                 setAuthToken(response.data)
                 setUserAccess(jwt_decode(response.data.access))
                 localStorage.setItem('authtoken', JSON.stringify(response.data))
                 history.push('/records')
-            } else {
-                logoutHandler()
-            }
-
         }
         catch (err) {
             if (err.response) {
                 console.log(err.response.data)
                 console.log(err.response.status)
                 console.log(err.response.headers)
-            } else {
-                console.log(err)
-            }
+                logoutHandler()
+            } 
         }
     }, [authToken?.refresh, history, logoutHandler])
 
