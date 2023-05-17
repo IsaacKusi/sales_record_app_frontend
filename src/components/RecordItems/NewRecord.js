@@ -1,13 +1,35 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import DataContext from "../../context/DataContext";
 import api from '../../api/post';
 import { format } from 'date-fns';
 
 
 const NewRecord = () => {
-    const { sales, userAccess, setSales } = useContext(DataContext)
+    const { sales, userAccess, setSales,authToken } = useContext(DataContext)
     const [amountItem, setAmountItem] = useState('')
     const [invalid, setInvalid] = useState(false)
+
+    useEffect(() => {
+        const getSaleItems = async () => {
+            
+            try {
+                const response = await api.get(`api/sale/${userAccess.user_id}`, {headers:{
+                    'Content-Type':'application/json',
+                    'authorization': 'Bearer ' + String(authToken.access)
+                }})
+                setSales(response.data)
+            } catch (err) {
+                if (err) {
+                    // console.log(err.response.data)
+                    console.log(err.response.status)
+                    console.log(err.response.headers)
+                } 
+            }
+        }
+
+        getSaleItems() 
+
+    }, [userAccess.user_id, authToken.access, setSales])
 
     const addRecordHandler = async (e) => {
         e.preventDefault()
