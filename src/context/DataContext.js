@@ -14,30 +14,10 @@ export const DataProvider = ({ children }) => {
     const [authToken, setAuthToken] = useState()
     const [userAccess, setUserAccess] = useState()
     const [sales, setSales] = useState([])
+    const [error, setError] = useState()
+    const [showError, setShowError] = useState(false)
 
 
-    useEffect(() => {
-        const getSaleItems = async () => {
-            
-            try {
-                const response = await api.get(`api/sale/${userAccess?.user_id}`, {headers:{
-                    'Content-Type':'application/json'
-                }})
-                setSales(response.data)
-            } catch (err) {
-                if (err) {
-                    console.log(err.response.data)
-                    console.log(err.response.status)
-                    console.log(err.response.headers)
-                } 
-            }
-        }
-
-        getSaleItems() 
-
-    }, [userAccess?.user_id])
-
-    
     useEffect(() => {
         if (posting) {
             const login = async () => {
@@ -53,19 +33,24 @@ export const DataProvider = ({ children }) => {
                         setAuthToken(response.data)
                         setUserAccess(jwt_decode(response.data.access))
                         localStorage.setItem('authtoken', JSON.stringify(response.data))
-                        history.push('/records')
+                        history.push('/records')    
                 }
                 catch (err) {
                     if (err.response) {
                         console.log(err.response.data)
                         console.log(err.response.status)
                         console.log(err.response.headers)
+                        setError(err.response.data.detail)
+                        setShowError(true)
+                        setTimeout(()=>{
+                            setShowError(false)
+                        }, 2000)
                     }
                 }
             }
-
             login()
         }
+        
     }, [username, password, posting, history])
 
 
@@ -124,11 +109,10 @@ export const DataProvider = ({ children }) => {
         return () => clearInterval(interval)
     }, [updateToken, authToken])
 
-
     return <DataContext.Provider value={{
         setUsername, setPassword, username,
         password, posting, setPosting, authToken, setAuthToken, userAccess, setUserAccess,
-        logoutHandler, sales, setSales
+        logoutHandler, sales, setSales, error, setError, showError, setShowError
     }}>
         {children}
     </DataContext.Provider>
