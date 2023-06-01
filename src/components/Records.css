@@ -91,3 +91,10 @@ table{
     border: none;
     margin-left: 1px;
 }
+
+.fa-items{
+ display: flex;
+ place-content: center;
+ align-items: center;
+ margin-right: 8px;
+}
