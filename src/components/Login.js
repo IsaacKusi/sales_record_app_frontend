@@ -21,7 +21,7 @@ const Login = () => {
                 <p>Please login with your username and password</p>
                 {showError && <p style={{color:'red'}}>{error}</p>}
                 <div className='login-form-item'>
-                    <form className='login-form' onSubmit={loginHandler} >
+                    <form className='login-form text-sm' onSubmit={loginHandler} >
                         <input type="text" placeholder='Username' name='username' autoComplete='off' required />
                         <FaUser className='form-user' />
                         <input type="password" placeholder='Password' name='password' required/>
