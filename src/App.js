@@ -1,22 +1,14 @@
-import Login from './components/Login';
-import Records from './components/Records';
-import PrivateRoute from './utils/PrivateRoute';
-import { Route, Switch } from "react-router-dom";
 import { DataProvider } from './context/DataContext';
-import './app.css'
-
-
+import { AppMetaContextProvider } from './context/AppMetaContext';
+import MainContainer from './components/MainContainer'
 
 const App = () => {
-
-
   return (
     <>
       <DataProvider>
-        <Switch>
-          <Route exact path='/' component={Login} />
-          <PrivateRoute path='/records' component={Records} />
-        </Switch>
+        <AppMetaContextProvider>
+          <MainContainer />
+        </AppMetaContextProvider>
       </DataProvider>
     </>
   );

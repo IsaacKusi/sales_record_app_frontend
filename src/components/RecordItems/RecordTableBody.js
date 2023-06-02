@@ -2,12 +2,14 @@
 import { FaTrashAlt } from "react-icons/fa";
 import { useContext } from "react";
 import DataContext from "../../context/DataContext";
+import AppMetaContext from "../../context/AppMetaContext";
 import api from '../../api/post';
 
 
 
 const RecordTableBody = ({ items }) => {
     const { sales, setSales } = useContext(DataContext)
+    const { state} = useContext(AppMetaContext)
 
     const deleteHandler = async (ID, user) => {
         try {
@@ -29,8 +31,8 @@ const RecordTableBody = ({ items }) => {
 
     return <>
         <tr className="tbody-row">
-            <td>{items.date_str}</td>
-            <td>{items.amount}</td>
+            <td style={{color: state.textColor}}>{items.date_str}</td>
+            <td style={{color: state.textColor}}>{items.amount}</td>
             <td><FaTrashAlt style={{ color: 'red', cursor:'pointer' }} onClick={() => deleteHandler(items.item_id, items.user_id)} /></td>
         </tr>
     </>
