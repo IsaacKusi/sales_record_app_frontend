@@ -2,16 +2,24 @@
 import { FaLock, FaUser } from 'react-icons/fa'
 import { useContext} from 'react'
 import DataContext from '../context/DataContext'
+import AppMetaContext from '../context/AppMetaContext'
 import './Login.css'
 
 const Login = () => {
     const { setUsername, setPassword, setPosting,error, showError} = useContext(DataContext)
+    const {setLightMode, setNightMode} = useContext(AppMetaContext)
 
     const loginHandler = (e) => {
         e.preventDefault()
         setUsername(e.target.username.value)
         setPassword(e.target.password.value)
         setPosting(true)
+        if(localStorage.getItem('nightModeStore')){
+        setNightMode(JSON.parse(localStorage.getItem('nightModeStore')))
+        setLightMode(JSON.parse(localStorage.getItem('lightModeStore')))
+        }else{
+            setLightMode(true)
+        }
     }
 
     return <>

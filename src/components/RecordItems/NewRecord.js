@@ -1,11 +1,13 @@
 import { useContext, useState, useEffect } from "react";
 import DataContext from "../../context/DataContext";
+import AppMetaContext from "../../context/AppMetaContext";
 import api from '../../api/post';
 import { format } from 'date-fns';
 
 
 const NewRecord = () => {
     const { sales, userAccess, setSales,authToken } = useContext(DataContext)
+    const { state} = useContext(AppMetaContext)
     const [amountItem, setAmountItem] = useState('')
     const [invalid, setInvalid] = useState(false)
 
@@ -67,7 +69,7 @@ const NewRecord = () => {
             <form onSubmit={addRecordHandler} >
                 <input type="Number" placeholder="Amount" min={0} className="add-input"
                     value={amountItem} onChange={(e) => setAmountItem(e.target.value)} />
-                <button className="newRecord-button">Add Record</button>
+                <button  className="newRecord-button" style={{backgroundColor:state.buttonColor}}>Add Record</button>
             </form>
             {invalid && <p style={{color:'red', fontSize:'small'}}>The amount field cannot be empty</p>}
         </main>
