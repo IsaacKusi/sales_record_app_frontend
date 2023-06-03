@@ -1,15 +1,19 @@
-import { DataProvider } from './context/DataContext';
+import { AuthProvider } from './context/AuthContext';
 import { AppMetaContextProvider } from './context/AppMetaContext';
+import { RecordProvider } from './context/RecordContext';
 import MainContainer from './components/MainContainer'
+
 
 const App = () => {
   return (
     <>
-      <DataProvider>
-        <AppMetaContextProvider>
-          <MainContainer />
-        </AppMetaContextProvider>
-      </DataProvider>
+      <AuthProvider>
+        <RecordProvider>
+          <AppMetaContextProvider>
+            <MainContainer />
+          </AppMetaContextProvider>
+        </RecordProvider>
+      </AuthProvider>
     </>
   );
 }

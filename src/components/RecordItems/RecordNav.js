@@ -1,12 +1,12 @@
 
 import { useContext, useEffect } from "react"
-import DataContext from "../../context/DataContext"
+import AuthContext from "../../context/AuthContext"
 import { FaMoon, FaSun } from "react-icons/fa"
 import AppMetaContext from "../../context/AppMetaContext"
 
 
 const RecordNav = () => {
-    const { logoutHandler, userAccess } = useContext(DataContext)
+    const { logoutHandler, userAccess } = useContext(AuthContext)
     const { showNightMode, setShowNightMode, showLightMode,
         setShowLightMode, state, dispatch, setNightMode, setLightMode, nightMode, lightMode } = useContext(AppMetaContext)
 

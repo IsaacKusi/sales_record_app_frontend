@@ -1,12 +1,13 @@
 
 import { FaLock, FaUser } from 'react-icons/fa'
 import { useContext} from 'react'
-import DataContext from '../context/DataContext'
+import AuthContext from '../context/AuthContext'
 import AppMetaContext from '../context/AppMetaContext'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import './Login.css'
 
 const Login = () => {
-    const { setUsername, setPassword, setPosting,error, showError} = useContext(DataContext)
+    const { setUsername, setPassword, setPosting,error, showError} = useContext(AuthContext)
     const {setLightMode, setNightMode} = useContext(AppMetaContext)
 
     const loginHandler = (e) => {
@@ -23,6 +24,15 @@ const Login = () => {
     }
 
     return <>
+    <HelmetProvider>
+        <Helmet>
+              <title>
+                Login to SRA
+              </title>
+              <meta name='description' content='login with credentials'/>
+              <meta name='keywords' content='login, sales, records'/>
+       </Helmet>
+       </HelmetProvider>
         <main id='login-items'>
             <div className='login-child'>
                 <h1>SRA</h1>

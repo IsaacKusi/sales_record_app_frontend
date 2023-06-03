@@ -1,11 +1,11 @@
 
-import DataContext from "../../context/DataContext";
+import AuthContext from "../../context/AuthContext";
 import AppMetaContext from "../../context/AppMetaContext";
 import RecordTableBody from "./RecordTableBody";
 import { useContext } from "react";
 
 const RecordTableContainer = () => {
- const{sales} = useContext(DataContext)
+ const{sales} = useContext(AuthContext)
  const{state} = useContext(AppMetaContext)
     return <>
         <main id="table-items">

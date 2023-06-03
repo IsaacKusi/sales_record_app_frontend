@@ -4,9 +4,9 @@ import { useHistory } from "react-router-dom";
 import api from '../api/post';
 
 
-const DataContext = createContext({})
+const AuthContext = createContext({})
 
-export const DataProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
     const history = useHistory()
     const [posting, setPosting] = useState(false)
     const [username, setUsername] = useState()
@@ -109,13 +109,13 @@ export const DataProvider = ({ children }) => {
         return () => clearInterval(interval)
     }, [updateToken, authToken])
 
-    return <DataContext.Provider value={{
+    return <AuthContext.Provider value={{
         setUsername, setPassword, username,
         password, posting, setPosting, authToken, setAuthToken, userAccess, setUserAccess,
         logoutHandler, sales, setSales, error, setError, showError, setShowError
     }}>
         {children}
-    </DataContext.Provider>
+    </AuthContext.Provider>
 }
 
-export default DataContext;
+export default AuthContext;
