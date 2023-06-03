@@ -1,12 +1,12 @@
 import { useContext, useState, useEffect } from "react";
-import DataContext from "../../context/DataContext";
+import AuthContext from "../../context/AuthContext";
 import AppMetaContext from "../../context/AppMetaContext";
 import api from '../../api/post';
 import { format } from 'date-fns';
 
 
 const NewRecord = () => {
-    const { sales, userAccess, setSales,authToken } = useContext(DataContext)
+    const { sales, userAccess, setSales,authToken } = useContext(AuthContext)
     const { state} = useContext(AppMetaContext)
     const [amountItem, setAmountItem] = useState('')
     const [invalid, setInvalid] = useState(false)
@@ -20,6 +20,7 @@ const NewRecord = () => {
                     'authorization': 'Bearer ' + String(authToken.access)
                 }})
                 setSales(response.data)
+
             } catch (err) {
                 if (err) {
                     // console.log(err.response.data)
@@ -31,7 +32,7 @@ const NewRecord = () => {
 
         getSaleItems() 
 
-    }, [userAccess.user_id, authToken.access, setSales])
+    }, [ userAccess.user_id, authToken.access, setSales])
 
     const addRecordHandler = async (e) => {
         e.preventDefault()
@@ -62,7 +63,6 @@ const NewRecord = () => {
             }
         }
     }
-
 
     return <>
         <main className="add-record-form">

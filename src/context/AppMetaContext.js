@@ -2,8 +2,6 @@
 import { createContext } from "react";
 import { useState,useReducer, useEffect } from "react";
 
-
-
 const initialColorStates = {
     textColor:'',
     buttonColor: '',

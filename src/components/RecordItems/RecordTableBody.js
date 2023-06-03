@@ -1,14 +1,14 @@
 
 import { FaTrashAlt } from "react-icons/fa";
 import { useContext } from "react";
-import DataContext from "../../context/DataContext";
+import AuthContext from "../../context/AuthContext";
 import AppMetaContext from "../../context/AppMetaContext";
 import api from '../../api/post';
 
 
 
 const RecordTableBody = ({ items }) => {
-    const { sales, setSales } = useContext(DataContext)
+    const { sales, setSales } = useContext(AuthContext)
     const { state} = useContext(AppMetaContext)
 
     const deleteHandler = async (ID, user) => {

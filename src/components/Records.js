@@ -4,7 +4,6 @@ import NewRecord from './RecordItems/NewRecord';
 import './Records.css'
 
 
-
 const Records = ()=>{
     return <>
      <RecordNav/>
