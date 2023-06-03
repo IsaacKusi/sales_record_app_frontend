@@ -33,6 +33,7 @@ export const AppMetaContextProvider = ({children})=>{
     const [showLightMode, setShowLightMode] = useState (true)
     const [nightMode, setNightMode] = useState(false)
     const [lightMode, setLightMode] = useState(false)
+    const [showToggleText, setShowToggleText] = useState(false)
     const [state, dispatch] = useReducer(reducer, initialColorStates)
 
     useEffect(()=>{
@@ -43,7 +44,7 @@ export const AppMetaContextProvider = ({children})=>{
     return <>
     <AppMetaContext.Provider value={{
         showNightMode, setShowNightMode,showLightMode, setShowLightMode, state,dispatch,
-        nightMode, setNightMode,lightMode, setLightMode
+        nightMode, setNightMode,lightMode, setLightMode, showToggleText, setShowToggleText
     }}>
         {children}
     </AppMetaContext.Provider>
