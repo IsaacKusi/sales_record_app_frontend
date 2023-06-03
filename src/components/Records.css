@@ -94,3 +94,17 @@ table{
  margin-right: 8px;
  cursor: pointer;
 }
+
+.toggle-text{
+    font-size: small;
+    margin-right: 2px;
+    position: fixed;
+    right: 6.5rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .welcome{
+        display: none;
+    }
+}

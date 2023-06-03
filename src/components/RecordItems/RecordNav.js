@@ -7,7 +7,7 @@ import AppMetaContext from "../../context/AppMetaContext"
 
 const RecordNav = () => {
     const { logoutHandler, userAccess } = useContext(AuthContext)
-    const { showNightMode, setShowNightMode, showLightMode,
+    const { showNightMode, setShowNightMode, showLightMode,showToggleText, setShowToggleText,
         setShowLightMode, state, dispatch, setNightMode, setLightMode, nightMode, lightMode } = useContext(AppMetaContext)
 
     useEffect(() => {
@@ -58,11 +58,12 @@ const RecordNav = () => {
             <div className="record-child-h1" >
                 <h1 style={{ color: state.textColor }}>Sales</h1>
             </div>
-            <div className="record-child">
+            <div className="record-child welcome">
                 {userAccess ? <p style={{ color: state.textColor }}>Welcome {userAccess.username} !!!</p> : null}
             </div>
             <div className="record-child">
-                <div className="fa-items">
+                <div className="fa-items" onMouseEnter={()=>{setShowToggleText(true)}} onMouseLeave={()=>{setShowToggleText(false)}}>
+                  {showToggleText &&  <p className="toggle-text" style={{ color: state.textColor }}>toggle darkmode</p>}
                    {showNightMode && <FaMoon className="fa-moon" onClick={() => setNightMode(true)} />} 
                     {showLightMode && <FaSun className="fa-sun" onClick={() => setLightMode(true)} style={{ color: state.textColor }} />}
                 </div>
